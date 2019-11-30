@@ -1,0 +1,6 @@
+.vscode-test
+dist
+node_modules
+*.vsix
+
+token.json

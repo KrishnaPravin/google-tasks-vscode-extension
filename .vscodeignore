@@ -1,0 +1,17 @@
+.vscode/**
+.vscode-test/**
+node_modules
+src/**
+.gitignore
+.prettierrc
+**/package-lock.json
+**/tsconfig.json
+**/tslint.json
+**/token.json
+**/webpack.config.js
+
+**/*.map
+**/*.ts
+
+
+out/test/**
