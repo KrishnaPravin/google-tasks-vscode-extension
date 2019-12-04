@@ -2,6 +2,7 @@
 .vscode-test/**
 node_modules
 src/**
+resources/external
 .gitignore
 .prettierrc
 **/package-lock.json
