@@ -15,5 +15,23 @@
     "tasklists",
     "webpack'ed"
   ],
-  "editor.rulers": [120]
+  "editor.rulers": [
+    120
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#1e437f",
+    "activityBar.activeBorder": "#1a060e",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#1a060e",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "titleBar.activeBackground": "#142d56",
+    "titleBar.inactiveBackground": "#142d5699",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "statusBar.background": "#142d56",
+    "statusBarItem.hoverBackground": "#1e437f",
+    "statusBar.foreground": "#e7e7e7"
+  },
+  "peacock.color": "#142d56"
 }
