@@ -1,49 +1,53 @@
-# Google Tasks - VS Code Extension
+# Google Tasks Extension for VS Code
 
-You can view your list of tasks from the Google Tasks application in the tree view of VS Code.
-You can manage your To-Do list without going out of your Code Editor.
+## Manage your To-Do list ✅ without going out of your Code Editor 🤖.
 
-## Features
+> This is **not** similar to extensions like 🌳 [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree), which shows a tree view of the //TODO: comments in the source code
 
-Description of specific features of this extension including screenshots of this extension in action will be added soon. Image paths are relative to this README file.
+> This is not an official product of Google
 
-For example if there is an image subfolder under this extension's project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. That is an excellent way to show off this extension! The recommended short, focused animations that are easy to follow will be added soon.
+This extension is about viewing your list of tasks from the [Google Tasks](https://support.google.com/tasks/answer/7675772) in the tree view of [VS Code Editor](https://code.visualstudio.com/).
 
 ## Requirements
 
-If this extension has any requirements or dependencies, a section describing those and how to install and configure them will be added.
+You need to have a Google Account to utilise this extension.
+
+## Screenshots
+
+![SignIn](resources/authorize.png)
+
+![Tree view of Google Tasks](resources/treeView.png)
 
 ## Extension Settings
 
-Will include if this extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-- `myExtension.enable`: enable/disable this extension
-- `myExtension.thing`: set to `blah` to do something
+Currently this extension does not have any settings. But will be added soon 🛠.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against this extension. So known issues will be added soon.
+- Not able to logout 🚪🏃
+
+## Telemetry
 
 ## Release Notes
 
-### 0.0.1
-
-Initial release of google-tasks extension with read only list of Google Tasks
-
-### 0.0.2
-
-Trying to fix startup issue
-
 ### 0.1.0
 
-Future features X, Y, and Z.
+🤞Initial release of google-tasks extension with read only list of Google Tasks
 
 **Enjoy!**
+
+Extension usage analytics
+
+We are a company trying to build a business and we want to measure how this extension is used and how much it's used, so we track some usage analytics completely anonymously – e.g. whether you've inspect an entity in via the Debt Ratings tree view.
+
+No personal information is tracked and neither is any code.
+
+We simply track events that look like this:
+
+{
+"event": "note.add",
+"timestamp": "2019-09-10T16:03:08.938Z",
+"userId": "d939629a-b73d-4c65-bf7a-d59aa8b12594",
+"sessionId": "fb71462a-f2a8-4343-999d-5cff2ee7079e"
+}
+We plan to make this configurable in the future so you can opt out.

@@ -10,7 +10,7 @@
   "bugs": {
     "url": "https://github.com/KrishnaPravin/google-tasks-vscode-extension/issues"
   },
-  "icon": "resources/external/marketPlaceIcon.png",
+  "icon": "resources/marketPlaceIcon.png",
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.40.0"
