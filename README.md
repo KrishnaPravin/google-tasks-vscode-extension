@@ -22,11 +22,13 @@ You need to have a Google Account to utilise this extension.
 
 Currently this extension does not have any settings. But will be added soon 🛠.
 
+## Privacy Policy
+
+This extension does not collect and send any information to any server.
+
 ## Known Issues
 
 - Not able to logout 🚪🏃
-
-## Telemetry
 
 ## Release Notes
 
@@ -35,19 +37,3 @@ Currently this extension does not have any settings. But will be added soon 🛠
 🤞Initial release of google-tasks extension with read only list of Google Tasks
 
 **Enjoy!**
-
-Extension usage analytics
-
-We are a company trying to build a business and we want to measure how this extension is used and how much it's used, so we track some usage analytics completely anonymously – e.g. whether you've inspect an entity in via the Debt Ratings tree view.
-
-No personal information is tracked and neither is any code.
-
-We simply track events that look like this:
-
-{
-"event": "note.add",
-"timestamp": "2019-09-10T16:03:08.938Z",
-"userId": "d939629a-b73d-4c65-bf7a-d59aa8b12594",
-"sessionId": "fb71462a-f2a8-4343-999d-5cff2ee7079e"
-}
-We plan to make this configurable in the future so you can opt out.
