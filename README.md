@@ -1,4 +1,4 @@
-# Google Tasks Extension for VS Code
+# Google Tasks for VSCode (unofficial)
 
 ## Manage your To-Do list ✅ without going out of your Code Editor 🤖.
 
