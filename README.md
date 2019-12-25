@@ -24,12 +24,8 @@ This extension accesses the user data only during the runtime of VSCode applicat
 
 ## Known Issues
 
-- Not able to logout 🚪🏃
-
 ## Release Notes
 
-### 0.1.0
-
-🤞Initial release of google-tasks extension with read only list of Google Tasks
+- Please refer [CHANGELOG](CHANGELOG.md)
 
 **Enjoy!**
