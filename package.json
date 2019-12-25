@@ -18,6 +18,11 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "Google Tasks",
+    "Todo List",
+    "tasks"
+  ],
   "activationEvents": [
     "onView:googleTasks"
   ],
@@ -32,6 +37,12 @@
         }
       ]
     },
+    "commands": [
+      {
+        "command": "googleTasks.logout",
+        "title": "Logout"
+      }
+    ],
     "views": {
       "google-tasks": [
         {
@@ -39,12 +50,18 @@
           "name": "Tasks List"
         }
       ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "googleTasks.logout",
+          "when": "GoogleUserTokenExists"
+        }
+      ]
     }
   },
   "scripts": {
-    "vscode:prepublish": "webpack --mode production",
-    "webpack": "webpack --mode development",
-    "webpack-dev": "webpack --mode development --watch",
+    "vscode:prepublish": "webpack",
     "test-compile": "tsc -p ./",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",

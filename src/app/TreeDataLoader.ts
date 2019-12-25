@@ -1,7 +1,6 @@
 'use strict'
 
 import * as vscode from 'vscode'
-import * as fs from 'fs'
 import {OAuth2Client} from 'googleapis-common'
 
 import GTaskTreeProvider from './TreeDataProviders/GTask'
@@ -16,6 +15,7 @@ export default function loadTreeData() {
     const token = getStoredToken()
     oAuth2Client.setCredentials(token)
     attachTreeProvider(oAuth2Client)
+    vscode.commands.executeCommand('setContext', 'GoogleUserTokenExists', true)
   } catch (err) {
     if (err.message === 'Token not found') {
       vscode.commands.registerCommand('extension.initUserGAuth', initiateUserAuthorization)

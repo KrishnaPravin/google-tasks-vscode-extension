@@ -26,3 +26,13 @@ export function getStoredToken(): Credentials {
     throw new Error('Error getting stored Google token')
   }
 }
+
+export function removeToken(): boolean {
+  try {
+    fs.unlinkSync(getTokenPath())
+    return true
+  } catch (err) {
+    console.error(err)
+    throw new Error('Error removing access token')
+  }
+}
