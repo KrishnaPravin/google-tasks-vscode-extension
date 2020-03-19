@@ -33,4 +33,15 @@ export default function loadTreeData() {
 async function attachTreeProvider(oAuth2Client: OAuth2Client) {
   const gTaskTreeProvider = new GTaskTreeProvider(oAuth2Client)
   vscode.window.registerTreeDataProvider('googleTasks', gTaskTreeProvider)
+  vscode.commands.executeCommand('setContext', 'HideCompleted', true)
+  vscode.commands.registerCommand('googleTasks.showCompleted', () => {
+    vscode.commands.executeCommand('setContext', 'ShowCompleted', true)
+    vscode.commands.executeCommand('setContext', 'HideCompleted', false)
+    gTaskTreeProvider.refresh({showCompleted: true})
+  })
+  vscode.commands.registerCommand('googleTasks.hideCompleted', () => {
+    vscode.commands.executeCommand('setContext', 'ShowCompleted', false)
+    vscode.commands.executeCommand('setContext', 'HideCompleted', true)
+    gTaskTreeProvider.refresh({showCompleted: false})
+  })
 }

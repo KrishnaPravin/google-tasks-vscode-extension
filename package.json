@@ -42,6 +42,14 @@
       {
         "command": "googleTasks.logout",
         "title": "Logout"
+      },
+      {
+        "command": "googleTasks.showCompleted",
+        "title": "Show Completed"
+      },
+      {
+        "command": "googleTasks.hideCompleted",
+        "title": "Hide Completed"
       }
     ],
     "views": {
@@ -55,8 +63,19 @@
     "menus": {
       "view/title": [
         {
+          "command": "googleTasks.showCompleted",
+          "when": "GoogleUserTokenExists && HideCompleted",
+          "group": "a"
+        },
+        {
+          "command": "googleTasks.hideCompleted",
+          "when": "GoogleUserTokenExists && ShowCompleted",
+          "group": "a"
+        },
+        {
           "command": "googleTasks.logout",
-          "when": "GoogleUserTokenExists"
+          "when": "GoogleUserTokenExists",
+          "group": "auth"
         }
       ]
     }
