@@ -21,7 +21,8 @@
   "keywords": [
     "Google Tasks",
     "Todo List",
-    "tasks"
+    "tasks",
+    "productivity"
   ],
   "activationEvents": [
     "onView:googleTasks"
