@@ -10,7 +10,7 @@
       "type": "extensionHost",
       "request": "launch",
       "runtimeExecutable": "${execPath}",
-      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}", "--disable-extensions"],
       "preLaunchTask": "${defaultBuildTask}", // some task in tasks.json
       "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     },
