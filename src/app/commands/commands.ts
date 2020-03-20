@@ -3,6 +3,7 @@ import {commands, window} from 'vscode'
 import {removeToken} from '../Token'
 import {AuthorizeGoogleTreeDataProvider} from '../TreeDataProviders/AuthorizeGoogle.TreeDataProvider'
 import initiateUserAuthorization from '../userAuthorization'
+import gTaskTreeProvider from '../TreeDataProviders/GTask/GTask.TreeDataProvider'
 
 const commandsList = {
   'googleTasks.logout': () => {

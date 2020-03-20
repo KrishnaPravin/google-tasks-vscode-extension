@@ -3,8 +3,8 @@
 import * as vscode from 'vscode'
 import {OAuth2Client} from 'googleapis-common'
 
-import GTaskTreeProvider from './TreeDataProviders/GTask/GTask.TreeDataProvider'
 import {AuthorizeGoogleTreeDataProvider} from './TreeDataProviders/AuthorizeGoogle.TreeDataProvider'
+import gTaskTreeProvider from './TreeDataProviders/GTask/GTask.TreeDataProvider'
 import getOAuthClient from './OAuthClient'
 import {getStoredToken} from './Token'
 
@@ -29,7 +29,7 @@ export default function loadTreeData() {
 }
 
 async function attachTreeProvider(oAuth2Client: OAuth2Client) {
-  const gTaskTreeProvider = new GTaskTreeProvider(oAuth2Client)
+  gTaskTreeProvider.setOAuthClient(oAuth2Client)
   vscode.window.registerTreeDataProvider('googleTasks', gTaskTreeProvider)
   vscode.commands.executeCommand('setContext', 'HideCompleted', true)
 }

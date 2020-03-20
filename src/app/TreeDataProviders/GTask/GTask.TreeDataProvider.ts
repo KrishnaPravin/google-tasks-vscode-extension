@@ -9,15 +9,16 @@ import {GTask} from './GTask.treeItem'
 
 type GTaskTreeItem = GTask | GTaskList
 
-export default class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
-  service: tasks_v1.Tasks
+class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
+  service?: tasks_v1.Tasks
 
   private _onDidChangeTreeData: vscode.EventEmitter<GTask> = new vscode.EventEmitter<GTask>()
   readonly onDidChangeTreeData: vscode.Event<GTask> = this._onDidChangeTreeData.event
   private _showCompleted = false
 
-  constructor(oAuth2Client: OAuth2Client) {
+  setOAuthClient(oAuth2Client: OAuth2Client): GTaskTreeProvider {
     this.service = google.tasks({version: 'v1', auth: oAuth2Client})
+    return this
   }
 
   // Overrides
@@ -27,10 +28,23 @@ export default class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskT
 
   // Overrides
   async getChildren(element?: GTaskTreeItem): Promise<GTaskTreeItem[]> {
+    if (!this.service) {
+      vscode.window.showErrorMessage('oAuth client is not initialized')
+      return []
+    }
     if (!element) {
       const {data} = await this.service.tasklists.list()
       const list = data.items || []
-      return Promise.all(list.map(taskList => GTaskListBuilder.build(taskList, this.service, this._showCompleted)))
+      return Promise.all(
+        list.map(taskList =>
+          GTaskListBuilder.build(
+            taskList,
+            // @ts-ignore
+            this.service,
+            this._showCompleted
+          )
+        )
+      )
     } else if (this._isTask(element)) {
       return element.children.map(childTask => new GTask(childTask))
     } else if (this._isTaskList(element)) return element.childTaskList || []
@@ -85,3 +99,5 @@ class GTaskListBuilder {
     )
   }
 }
+
+export default new GTaskTreeProvider()
