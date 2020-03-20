@@ -4,7 +4,7 @@ import * as vscode from 'vscode'
 import {OAuth2Client} from 'googleapis-common'
 
 import GTaskTreeProvider from './TreeDataProviders/GTask/GTask.TreeDataProvider'
-import {AuthorizeGoogleTreeDataProvider} from './TreeDataProviders/AuthorizeGoogle'
+import {AuthorizeGoogleTreeDataProvider} from './TreeDataProviders/AuthorizeGoogle.TreeDataProvider'
 import getOAuthClient from './OAuthClient'
 import {getStoredToken} from './Token'
 

@@ -1,7 +1,7 @@
 import {commands, window} from 'vscode'
 
 import {removeToken} from '../Token'
-import {AuthorizeGoogleTreeDataProvider} from '../TreeDataProviders/AuthorizeGoogle'
+import {AuthorizeGoogleTreeDataProvider} from '../TreeDataProviders/AuthorizeGoogle.TreeDataProvider'
 import initiateUserAuthorization from '../userAuthorization'
 
 const commandsList = {
