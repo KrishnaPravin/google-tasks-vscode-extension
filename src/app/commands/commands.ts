@@ -10,7 +10,17 @@ const commandsList = {
     commands.executeCommand('setContext', 'GoogleUserTokenExists', false)
     window.registerTreeDataProvider('googleTasks', new AuthorizeGoogleTreeDataProvider())
   },
-  'extension.initUserGAuth': initiateUserAuthorization
+  'extension.initUserGAuth': initiateUserAuthorization,
+  'googleTasks.showCompleted': () => {
+    commands.executeCommand('setContext', 'ShowCompleted', true)
+    commands.executeCommand('setContext', 'HideCompleted', false)
+    gTaskTreeProvider.refresh({showCompleted: true})
+  },
+  'googleTasks.hideCompleted': () => {
+    commands.executeCommand('setContext', 'ShowCompleted', false)
+    commands.executeCommand('setContext', 'HideCompleted', true)
+    gTaskTreeProvider.refresh({showCompleted: false})
+  }
 }
 
 export function registerCommands(): void {
