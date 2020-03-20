@@ -6,7 +6,6 @@ import {OAuth2Client} from 'googleapis-common'
 import GTaskTreeProvider from './TreeDataProviders/GTask/GTask.TreeDataProvider'
 import {AuthorizeGoogleTreeDataProvider} from './TreeDataProviders/AuthorizeGoogle'
 import getOAuthClient from './OAuthClient'
-import initiateUserAuthorization from './userAuthorization'
 import {getStoredToken} from './Token'
 
 export default function loadTreeData() {
@@ -18,7 +17,6 @@ export default function loadTreeData() {
     vscode.commands.executeCommand('setContext', 'GoogleUserTokenExists', true)
   } catch (err) {
     if (err.message === 'Token not found') {
-      vscode.commands.registerCommand('extension.initUserGAuth', initiateUserAuthorization)
       vscode.window.registerTreeDataProvider('googleTasks', new AuthorizeGoogleTreeDataProvider())
       vscode.window.showInformationMessage('Please authorize with Google to continue')
     } else if (err.message === 'Credentials not found') {

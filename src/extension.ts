@@ -2,31 +2,26 @@ import * as vscode from 'vscode'
 
 import loadGoogleTasks from './app/TreeDataLoader'
 import {registerRootPath} from './RootPath'
-import {removeToken} from './app/Token'
-import {AuthorizeGoogleTreeDataProvider} from './app/TreeDataProviders/AuthorizeGoogle'
 import {extensionQualifiedId} from './Constants'
+import {registerCommands} from './app/commands/commands'
 
 export function activate(context: vscode.ExtensionContext) {
-  const start = process.hrtime()
+  const startTime = process.hrtime()
 
   registerRootPath(context)
+  registerCommands()
 
   loadGoogleTasks()
 
-  vscode.commands.registerCommand('googleTasks.logout', () => {
-    removeToken()
-    vscode.commands.executeCommand('setContext', 'GoogleUserTokenExists', false)
-    vscode.window.registerTreeDataProvider('googleTasks', new AuthorizeGoogleTreeDataProvider())
-  })
-
-  const googleTasks = vscode.extensions.getExtension(extensionQualifiedId)!
-  const googleTasksVersion = googleTasks.packageJSON.version
-  console.log(`GoogleTasks (v${googleTasksVersion}) activated ⏱ ${getDurationMilliseconds(start)} ms`)
+  logExtensionActivated(startTime)
 }
 
-function getDurationMilliseconds(start: [number, number]) {
-  const [secs, nanoseconds] = process.hrtime(start)
-  return secs * 1000 + Math.floor(nanoseconds / 1000000)
+function logExtensionActivated(startTime: [number, number]) {
+  const googleTasks = vscode.extensions.getExtension(extensionQualifiedId)!
+  const googleTasksVersion = googleTasks.packageJSON.version
+  const [secs, nanoseconds] = process.hrtime(startTime)
+  const duration = secs * 1000 + Math.floor(nanoseconds / 1000000)
+  console.log(`GoogleTasks (v${googleTasksVersion}) activated in ⏱${duration}ms`)
 }
 
 export function deactivate() {}
