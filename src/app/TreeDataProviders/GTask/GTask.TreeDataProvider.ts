@@ -46,7 +46,7 @@ class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
         )
       )
     } else if (this._isTask(element)) {
-      return element.children.map(childTask => new GTask(childTask))
+      return element.children.map(childTask => new GTask(element.taskListId, childTask))
     } else if (this._isTaskList(element)) return element.childTaskList || []
 
     vscode.window.showErrorMessage('Unknown element in getChildren')
@@ -69,6 +69,11 @@ class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
 
   addTask(newTask: tasks_v1.Params$Resource$Tasks$Insert) {
     this.service?.tasks.insert(newTask)
+    this.refresh()
+  }
+
+  deleteTask(task: tasks_v1.Params$Resource$Tasks$Delete) {
+    this.service?.tasks.delete(task)
     this.refresh()
   }
 }
@@ -100,7 +105,7 @@ class GTaskListBuilder {
     })
     return new GTaskList(
       taskList,
-      list.map(task => new GTask(task, children[task.id || 'error']))
+      list.map(task => new GTask(taskList.id || '', task, children[task.id || 'error']))
     )
   }
 }

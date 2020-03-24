@@ -43,6 +43,9 @@ const commandsList = {
     })
 
     gTaskTreeProvider.addTask({tasklist: node.taskList.id, requestBody: {title, notes}})
+  },
+  'googleTasks.deleteTask': async (node: GTask) => {
+    if (node.task.id) gTaskTreeProvider.deleteTask({tasklist: node.taskListId, task: node.task.id})
   }
 }
 

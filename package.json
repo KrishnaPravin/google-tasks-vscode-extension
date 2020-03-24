@@ -38,6 +38,14 @@
         }
       ]
     },
+    "views": {
+      "google-tasks": [
+        {
+          "id": "googleTasks",
+          "name": "Tasks List"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "googleTasks.logout",
@@ -58,16 +66,16 @@
           "dark": "resources/dark-icon-add.svg",
           "light": "resources/light-icon-add.svg"
         }
+      },
+      {
+        "command": "googleTasks.deleteTask",
+        "title": "Delete Task",
+        "icon": {
+          "dark": "resources/dark-icon-delete.svg",
+          "light": "resources/light-icon-delete.svg"
+        }
       }
     ],
-    "views": {
-      "google-tasks": [
-        {
-          "id": "googleTasks",
-          "name": "Tasks List"
-        }
-      ]
-    },
     "menus": {
       "view/title": [
         {
@@ -95,6 +103,16 @@
         {
           "command": "googleTasks.addTask",
           "when": "viewItem =~ /GTaskList/",
+          "group": "1_actions"
+        },
+        {
+          "command": "googleTasks.deleteTask",
+          "when": "viewItem =~ /GTask$/",
+          "group": "inline@1"
+        },
+        {
+          "command": "googleTasks.deleteTask",
+          "when": "viewItem =~ /GTask$/",
           "group": "1_actions"
         }
       ]

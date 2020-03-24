@@ -7,16 +7,24 @@ import {RootPath} from '../../../RootPath'
 type NodeType = 'task' | 'taskList' | 'completedTask' | 'completedTaskList'
 
 export class GTask extends vscode.TreeItem {
-  constructor(public task: tasks_v1.Schema$Task, public children: tasks_v1.Schema$Task[] = []) {
+  contextValue = 'GTask'
+
+  constructor(
+    public taskListId: string,
+    public task: tasks_v1.Schema$Task,
+    public children: tasks_v1.Schema$Task[] = []
+  ) {
     super(
       task.title || 'No Title Provided',
       children.length ? vscode.TreeItemCollapsibleState.Collapsed : vscode.TreeItemCollapsibleState.None
     )
   }
+
   // Overrides
   get tooltip(): string {
     return this.task.notes || this.task.title || 'No Title Provided'
   }
+
   // Overrides
   get description(): string {
     const hasChildren = Boolean(this.children.length)
