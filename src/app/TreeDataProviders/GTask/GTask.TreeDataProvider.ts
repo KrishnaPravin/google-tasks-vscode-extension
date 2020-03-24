@@ -66,6 +66,11 @@ class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
     this._showCompleted = Boolean(options && options.showCompleted)
     this._onDidChangeTreeData.fire()
   }
+
+  addTask(newTask: tasks_v1.Params$Resource$Tasks$Insert) {
+    this.service?.tasks.insert(newTask)
+    this.refresh()
+  }
 }
 
 class GTaskListBuilder {

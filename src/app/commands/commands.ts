@@ -4,6 +4,8 @@ import {removeToken} from '../Token'
 import {AuthorizeGoogleTreeDataProvider} from '../TreeDataProviders/AuthorizeGoogle.TreeDataProvider'
 import initiateUserAuthorization from '../userAuthorization'
 import gTaskTreeProvider from '../TreeDataProviders/GTask/GTask.TreeDataProvider'
+import {GTaskList} from '../TreeDataProviders/GTask/GTaskList.treeItem'
+import {GTask} from '../TreeDataProviders/GTask/GTask.treeItem'
 
 const commandsList = {
   'googleTasks.logout': () => {
@@ -21,9 +23,29 @@ const commandsList = {
     commands.executeCommand('setContext', 'ShowCompleted', false)
     commands.executeCommand('setContext', 'HideCompleted', true)
     gTaskTreeProvider.refresh({showCompleted: false})
+  },
+  'googleTasks.addTask': async (node: GTaskList) => {
+    if (node.taskList.id === null) return
+
+    const title = await window.showInputBox({
+      prompt: 'Please provide a title for the task',
+      placeHolder: 'Task title',
+      value: undefined,
+      ignoreFocusOut: true
+    })
+    if (title === undefined || title.length === 0) return undefined
+
+    const notes = await window.showInputBox({
+      prompt: 'Please provide the notes for the task',
+      placeHolder: 'Notes for the task',
+      value: undefined,
+      ignoreFocusOut: true
+    })
+
+    gTaskTreeProvider.addTask({tasklist: node.taskList.id, requestBody: {title, notes}})
   }
 }
 
 export function registerCommands(): void {
-  Object.entries<() => void>(commandsList).forEach(([key, value]) => commands.registerCommand(key, value))
+  Object.entries<(node) => void>(commandsList).forEach(([key, value]) => commands.registerCommand(key, value))
 }

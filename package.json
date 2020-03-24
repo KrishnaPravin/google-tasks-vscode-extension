@@ -50,6 +50,14 @@
       {
         "command": "googleTasks.hideCompleted",
         "title": "Hide Completed"
+      },
+      {
+        "command": "googleTasks.addTask",
+        "title": "Add Task",
+        "icon": {
+          "dark": "resources/dark-icon-add.svg",
+          "light": "resources/light-icon-add.svg"
+        }
       }
     ],
     "views": {
@@ -76,6 +84,18 @@
           "command": "googleTasks.logout",
           "when": "GoogleUserTokenExists",
           "group": "auth"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "googleTasks.addTask",
+          "when": "viewItem =~ /GTaskList/",
+          "group": "inline@1"
+        },
+        {
+          "command": "googleTasks.addTask",
+          "when": "viewItem =~ /GTaskList/",
+          "group": "1_actions"
         }
       ]
     }
