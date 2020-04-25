@@ -50,5 +50,7 @@ const commandsList = {
 }
 
 export function registerCommands(): void {
-  Object.entries<(node) => void>(commandsList).forEach(([key, value]) => commands.registerCommand(key, value))
+  Object.entries<(node) => void>(commandsList).forEach(([key, value]) =>
+    commands.registerCommand(key, value)
+  )
 }

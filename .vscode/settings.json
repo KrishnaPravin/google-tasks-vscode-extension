@@ -8,16 +8,8 @@
   },
   // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
   "typescript.tsc.autoDetect": "off",
-  "cSpell.words": [
-    "activitybar",
-    "devtool",
-    "tasklist",
-    "tasklists",
-    "webpack'ed"
-  ],
-  "editor.rulers": [
-    120
-  ],
+  "cSpell.words": ["Pravin", "activitybar", "devtool", "tasklist", "tasklists", "webpack'ed"],
+  "editor.rulers": [100],
   "workbench.colorCustomizations": {
     "activityBar.background": "#1e437f",
     "activityBar.activeBorder": "#1a060e",
