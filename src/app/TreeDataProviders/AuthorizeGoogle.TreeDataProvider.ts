@@ -16,9 +16,8 @@ class AuthorizeGoogleTreeItem extends vscode.TreeItem {
     super('Please Authorize Google')
   }
   readonly command = {
-    command: 'extension.initUserGAuth',
+    command: 'googleTasks.initUserGAuth',
     title: 'Initiate Google Auth',
-    arguments: []
   }
   readonly description = '- Click here'
   readonly tooltip = 'Authorize to proceed'

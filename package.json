@@ -11,9 +11,9 @@
     "url": "https://github.com/KrishnaPravin/google-tasks-vscode-extension/issues"
   },
   "icon": "resources/marketPlaceIcon.png",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "engines": {
-    "vscode": "^1.40.0"
+    "vscode": "^1.44.0"
   },
   "categories": [
     "Other"
@@ -46,6 +46,12 @@
         }
       ]
     },
+    "viewsWelcome": [
+      {
+        "view": "googleTasks",
+        "contents": "Google user token not found.\nPlease authorize with Google to continue.\n[Authorize Google](command:googleTasks.initUserGAuth)"
+      }
+    ],
     "commands": [
       {
         "command": "googleTasks.logout",
