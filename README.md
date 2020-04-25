@@ -22,8 +22,6 @@ You need to have a Google Account with data in Google Tasks application to utili
 
 This extension accesses the user data only during the runtime of VSCode application. User data means only the data that is created by the user within the Google Tasks application. The accessed user data is directly displayed within the VSCode Editor. Also, this data is not persisted in any medium and is not sent or shared to any server or any 3rd party application
 
-## Known Issues
-
 ## Release Notes
 
 - Please refer [CHANGELOG](CHANGELOG.md)

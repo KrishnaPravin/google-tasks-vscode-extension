@@ -2,7 +2,7 @@
   "name": "google-tasks",
   "displayName": "Google Tasks for VSCode (unofficial)",
   "description": "Access Google Tasks list in the Tree View of VSCode",
-  "publisher": "KrishnaPravin",
+  "publisher": "krishnapravin",
   "repository": {
     "type": "git",
     "url": "https://github.com/KrishnaPravin/google-tasks-vscode-extension"
@@ -11,7 +11,7 @@
     "url": "https://github.com/KrishnaPravin/google-tasks-vscode-extension/issues"
   },
   "icon": "resources/marketPlaceIcon.png",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "engines": {
     "vscode": "^1.40.0"
   },

@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2020-04-25
+
+### Added
+
+- Manual refresh
+- Hide completed tasks
+- Add new tasks inside tasklist
+- Delete tasks inside tasklist
+- Mark tasks as completed inside tasklist
+
+### Changed
+
+- Disabled all other extensions during debug launch
+
 ## [0.1.5] - 2019-12-04
 
 ### Added
