@@ -62,13 +62,19 @@ class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
     return (gTaskTreeItem as GTask).task !== undefined
   }
 
-  refresh(options?: {showCompleted: boolean}): void {
-    this._showCompleted = Boolean(options && options.showCompleted)
+  refresh(options?: {showCompleted?: boolean}): void {
+    if (options && options.showCompleted !== undefined)
+      this._showCompleted = Boolean(options.showCompleted)
     this._onDidChangeTreeData.fire()
   }
 
   addTask(newTask: tasks_v1.Params$Resource$Tasks$Insert) {
     this.service?.tasks.insert(newTask)
+    this.refresh()
+  }
+
+  completeTask(task: tasks_v1.Params$Resource$Tasks$Patch) {
+    this.service?.tasks.patch(task)
     this.refresh()
   }
 
@@ -86,7 +92,11 @@ class GTaskListBuilder {
     service: tasks_v1.Tasks,
     showCompleted: boolean
   ): Promise<GTaskList> {
-    const {data} = await service.tasks.list({tasklist: taskList.id || '', showHidden: showCompleted})
+    const {data} = await service.tasks.list({
+      tasklist: taskList.id || '',
+      showHidden: showCompleted,
+      showCompleted,
+    })
     let list = data.items || []
     let children: {[key: string]: tasks_v1.Schema$Task[]} = {}
     list = list.filter(task => {

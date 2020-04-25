@@ -34,7 +34,7 @@ const commandsList = {
       prompt: 'Please provide a title for the task',
       placeHolder: 'Task title',
       value: undefined,
-      ignoreFocusOut: true
+      ignoreFocusOut: true,
     })
     if (title === undefined || title.length === 0) return undefined
 
@@ -42,14 +42,25 @@ const commandsList = {
       prompt: 'Please provide the notes for the task',
       placeHolder: 'Notes for the task',
       value: undefined,
-      ignoreFocusOut: true
+      ignoreFocusOut: true,
     })
 
     gTaskTreeProvider.addTask({tasklist: node.taskList.id, requestBody: {title, notes}})
   },
   'googleTasks.deleteTask': async (node: GTask) => {
     if (node.task.id) gTaskTreeProvider.deleteTask({tasklist: node.taskListId, task: node.task.id})
-  }
+  },
+  'googleTasks.completeTask': async (node: GTask) => {
+    if (node.task.id)
+      gTaskTreeProvider.completeTask({
+        tasklist: node.taskListId,
+        task: node.task.id,
+        requestBody: {
+          status: 'completed',
+          hidden: true,
+        },
+      })
+  },
 }
 
 export function registerCommands(): void {

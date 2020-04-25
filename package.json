@@ -78,6 +78,11 @@
           "dark": "resources/dark-icon-delete.svg",
           "light": "resources/light-icon-delete.svg"
         }
+      },
+      {
+        "command": "googleTasks.completeTask",
+        "title": "Complete Task",
+        "icon": "resources/completed.svg"
       }
     ],
     "menus": {
@@ -115,9 +120,19 @@
           "group": "1_actions"
         },
         {
-          "command": "googleTasks.deleteTask",
+          "command": "googleTasks.completeTask",
           "when": "viewItem =~ /GTask$/",
           "group": "inline@1"
+        },
+        {
+          "command": "googleTasks.completeTask",
+          "when": "viewItem =~ /GTask$/",
+          "group": "1_actions"
+        },
+        {
+          "command": "googleTasks.deleteTask",
+          "when": "viewItem =~ /GTask$/",
+          "group": "inline@2"
         },
         {
           "command": "googleTasks.deleteTask",
