@@ -13,5 +13,6 @@ jobs:
       - name: Install and Publish
         run: |
           npm install
-          npm i -g vsce
-          vsce publish -p ${{ secrets.VSCE_PERSONAL_ACCESS_TOKEN }}
+          npm run publish
+    env:
+      TOKEN: ${{ secrets.VSCE_PERSONAL_ACCESS_TOKEN }}
