@@ -24,6 +24,9 @@ const commandsList = {
     commands.executeCommand('setContext', 'HideCompleted', true)
     gTaskTreeProvider.refresh({showCompleted: false})
   },
+  'googleTasks.refresh': () => {
+    gTaskTreeProvider.refresh()
+  },
   'googleTasks.addTask': async (node: GTaskList) => {
     if (node.taskList.id === null) return
 
