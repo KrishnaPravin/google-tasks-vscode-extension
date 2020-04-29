@@ -16,7 +16,9 @@ export class GTask extends vscode.TreeItem {
   ) {
     super(
       task.title || 'No Title Provided',
-      children.length ? vscode.TreeItemCollapsibleState.Collapsed : vscode.TreeItemCollapsibleState.None
+      children.length
+        ? vscode.TreeItemCollapsibleState.Collapsed
+        : vscode.TreeItemCollapsibleState.None
     )
   }
 
@@ -36,7 +38,11 @@ export class GTask extends vscode.TreeItem {
     )
   }
   // Overrides
-  get iconPath(): string {
-    return path.join(RootPath.path, 'resources', this.task.completed ? 'completed.svg' : 'clock.svg')
+  get iconPath() {
+    const icon = `icon-task-${this.task.completed ? 'completed.svg' : 'incomplete.svg'}`
+    return {
+      light: path.join(RootPath.path, 'resources', `light-${icon}`),
+      dark: path.join(RootPath.path, 'resources', `dark-${icon}`),
+    }
   }
 }
