@@ -7,12 +7,15 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Notify pipeline start
+        run: curl https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_ID }}/sendMessage -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} -d text="Pipeline Started"
       - name: Checkout
         uses: actions/checkout@v2
-
       - name: Install and Publish
         run: |
           npm install
           npm run publish
+      - name: Notify pipeline end
+        run: curl https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_ID }}/sendMessage -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} -d text="Pipeline Ended"
     env:
       TOKEN: ${{ secrets.VSCE_PERSONAL_ACCESS_TOKEN }}
