@@ -170,14 +170,14 @@
           "group": "inline@1"
         },
         {
-          "command": "googleTasks.completeTask",
-          "when": "viewItem =~ /GTask$/",
-          "group": "1_actions"
-        },
-        {
           "command": "googleTasks.deleteTask",
           "when": "viewItem =~ /GTask$/",
           "group": "inline@2"
+        },
+        {
+          "command": "googleTasks.completeTask",
+          "when": "viewItem =~ /GTask$/",
+          "group": "1_actions"
         },
         {
           "command": "googleTasks.deleteTask",
