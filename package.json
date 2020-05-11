@@ -86,6 +86,22 @@
         }
       },
       {
+        "command": "googleTasks.addTaskList",
+        "title": "Add Task List",
+        "icon": {
+          "dark": "resources/dark-icon-add.svg",
+          "light": "resources/light-icon-add.svg"
+        }
+      },
+      {
+        "command": "googleTasks.deleteTaskList",
+        "title": "Delete TaskList",
+        "icon": {
+          "dark": "resources/dark-icon-delete.svg",
+          "light": "resources/light-icon-delete.svg"
+        }
+      },
+      {
         "command": "googleTasks.addTask",
         "title": "Add Task",
         "icon": {
@@ -113,24 +129,29 @@
     "menus": {
       "view/title": [
         {
-          "command": "googleTasks.refresh",
+          "command": "googleTasks.addTaskList",
           "when": "GoogleUserTokenExists",
           "group": "navigation@1"
         },
         {
+          "command": "googleTasks.refresh",
+          "when": "GoogleUserTokenExists",
+          "group": "navigation@2"
+        },
+        {
           "command": "googleTasks.showCompleted",
           "when": "GoogleUserTokenExists && HideCompleted",
-          "group": "navigation@2"
+          "group": "navigation@3"
         },
         {
           "command": "googleTasks.hideCompleted",
           "when": "GoogleUserTokenExists && ShowCompleted",
-          "group": "navigation@2"
+          "group": "navigation@3"
         },
         {
           "command": "googleTasks.logout",
           "when": "GoogleUserTokenExists",
-          "group": "navigation@3"
+          "group": "navigation@4"
         },
         {
           "command": "googleTasks.refresh",
@@ -160,9 +181,19 @@
           "group": "inline@1"
         },
         {
+          "command": "googleTasks.deleteTaskList",
+          "when": "viewItem =~ /GTaskList/",
+          "group": "inline@2"
+        },
+        {
           "command": "googleTasks.addTask",
           "when": "viewItem =~ /GTaskList/",
-          "group": "1_actions"
+          "group": "1_actions@1"
+        },
+        {
+          "command": "googleTasks.deleteTaskList",
+          "when": "viewItem =~ /GTaskList/",
+          "group": "1_actions@2"
         },
         {
           "command": "googleTasks.completeTask",

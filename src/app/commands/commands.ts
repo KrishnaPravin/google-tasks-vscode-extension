@@ -27,6 +27,20 @@ const commandsList = {
   'googleTasks.refresh': () => {
     gTaskTreeProvider.refresh()
   },
+  'googleTasks.addTaskList': async () => {
+    const title = await window.showInputBox({
+      prompt: 'Please provide a title for the tasklist',
+      placeHolder: 'Tasklist title',
+      value: undefined,
+      ignoreFocusOut: true,
+    })
+    if (title === undefined || title.length === 0) return undefined
+
+    gTaskTreeProvider.addTaskList({requestBody: {title}})
+  },
+  'googleTasks.deleteTaskList': async (node: GTaskList) => {
+    gTaskTreeProvider.deleteTaskList({tasklist: node.taskList.id || undefined})
+  },
   'googleTasks.addTask': async (node: GTaskList) => {
     if (node.taskList.id === null) return
 

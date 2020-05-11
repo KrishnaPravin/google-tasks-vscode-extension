@@ -68,6 +68,16 @@ class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
     this._onDidChangeTreeData.fire()
   }
 
+  async addTaskList(tasklist: tasks_v1.Params$Resource$Tasklists$Insert) {
+    await this.service?.tasklists.insert(tasklist)
+    this.refresh()
+  }
+
+  async deleteTaskList(taskList: tasks_v1.Params$Resource$Tasklists$Delete) {
+    await this.service?.tasklists.delete(taskList)
+    this.refresh()
+  }
+
   async addTask(newTask: tasks_v1.Params$Resource$Tasks$Insert) {
     await this.service?.tasks.insert(newTask)
     this.refresh()
