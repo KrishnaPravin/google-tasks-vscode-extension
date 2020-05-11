@@ -55,19 +55,35 @@
     "commands": [
       {
         "command": "googleTasks.logout",
-        "title": "Logout"
+        "title": "Logout",
+        "icon": {
+          "dark": "resources/dark-icon-logout.svg",
+          "light": "resources/light-icon-logout.svg"
+        }
       },
       {
         "command": "googleTasks.refresh",
-        "title": "Refresh"
+        "title": "Refresh",
+        "icon": {
+          "dark": "resources/dark-icon-refresh.svg",
+          "light": "resources/light-icon-refresh.svg"
+        }
       },
       {
         "command": "googleTasks.showCompleted",
-        "title": "Show Completed"
+        "title": "Show Completed",
+        "icon": {
+          "dark": "resources/dark-icon-show-completed.svg",
+          "light": "resources/light-icon-show-completed.svg"
+        }
       },
       {
         "command": "googleTasks.hideCompleted",
-        "title": "Hide Completed"
+        "title": "Hide Completed",
+        "icon": {
+          "dark": "resources/dark-icon-hide-completed.svg",
+          "light": "resources/light-icon-hide-completed.svg"
+        }
       },
       {
         "command": "googleTasks.addTask",
@@ -96,6 +112,26 @@
     ],
     "menus": {
       "view/title": [
+        {
+          "command": "googleTasks.refresh",
+          "when": "GoogleUserTokenExists",
+          "group": "navigation@1"
+        },
+        {
+          "command": "googleTasks.showCompleted",
+          "when": "GoogleUserTokenExists && HideCompleted",
+          "group": "navigation@2"
+        },
+        {
+          "command": "googleTasks.hideCompleted",
+          "when": "GoogleUserTokenExists && ShowCompleted",
+          "group": "navigation@2"
+        },
+        {
+          "command": "googleTasks.logout",
+          "when": "GoogleUserTokenExists",
+          "group": "navigation@3"
+        },
         {
           "command": "googleTasks.refresh",
           "when": "GoogleUserTokenExists",
