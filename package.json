@@ -149,11 +149,6 @@
           "group": "navigation@3"
         },
         {
-          "command": "googleTasks.logout",
-          "when": "GoogleUserTokenExists",
-          "group": "navigation@4"
-        },
-        {
           "command": "googleTasks.refresh",
           "when": "GoogleUserTokenExists",
           "group": "1_actions"
