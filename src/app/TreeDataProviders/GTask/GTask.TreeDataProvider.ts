@@ -46,6 +46,7 @@ class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
         )
       )
     } else if (this._isTask(element)) {
+      element.children.sort(sortTasks)
       return element.children.map(childTask => new GTask(element.taskListId, childTask))
     } else if (this._isTaskList(element)) return element.childTaskList || []
 
@@ -116,18 +117,17 @@ class GTaskListBuilder {
       else children[task.parent || 'error'] = [task]
       return false
     })
-    list.sort((a, b) => {
-      if (a.position && b.position) {
-        if (a.position > b.position) return 1
-        if (a.position < b.position) return -1
-      }
-      return 0
-    })
+    list.sort(sortTasks)
     return new GTaskList(
       taskList,
       list.map(task => new GTask(taskList.id || '', task, children[task.id || 'error']))
     )
   }
+}
+
+function sortTasks(a: tasks_v1.Schema$Task, b: tasks_v1.Schema$Task): number {
+  if (!(a.position && b.position)) return 0
+  return a.position > b.position ? 1 : a.position < b.position ? -1 : 0
 }
 
 export default new GTaskTreeProvider()
