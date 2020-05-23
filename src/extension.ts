@@ -3,10 +3,12 @@ import * as vscode from 'vscode'
 import loadGoogleTasks from './app/TreeDataLoader'
 import {registerRootPath} from './RootPath'
 import {extensionQualifiedId} from './Constants'
+import telemetry from './telemetry'
 import {registerCommands} from './app/commands/commands'
 
 export function activate(context: vscode.ExtensionContext) {
   const startTime = process.hrtime()
+  telemetry.sendTelemetryEvent('activate')
 
   registerRootPath(context)
   registerCommands()
@@ -24,4 +26,6 @@ function logExtensionActivated(startTime: [number, number]) {
   console.log(`GoogleTasks (v${googleTasksVersion}) activated in ⏱${duration}ms`)
 }
 
-export function deactivate() {}
+export function deactivate() {
+  telemetry.dispose()
+}

@@ -12,6 +12,7 @@
   },
   "icon": "resources/logo.png",
   "version": "0.2.4",
+  "aiKey": "c5722733-cc25-4ee0-bf89-febeea8257da",
   "engines": {
     "vscode": "^1.44.0"
   },
@@ -232,6 +233,7 @@
     "typescript": "^3.7.3",
     "vsce": "^1.75.0",
     "vscode": "^1.1.36",
+    "vscode-extension-telemetry": "^0.1.6",
     "vscode-test": "^1.2.3",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"

@@ -1,5 +1,6 @@
 import {commands, window} from 'vscode'
 
+import telemetry from '../../telemetry'
 import {removeToken} from '../Token'
 import {AuthorizeGoogleTreeDataProvider} from '../TreeDataProviders/AuthorizeGoogle.TreeDataProvider'
 import initiateUserAuthorization from '../userAuthorization'
@@ -78,7 +79,14 @@ const commandsList = {
 }
 
 export function registerCommands(): void {
-  Object.entries<(node) => void>(commandsList).forEach(([key, value]) =>
-    commands.registerCommand(key, value)
+  Object.entries(commandsList).forEach(([command, handler]) =>
+    commands.registerCommand(command, sendTelemetry(command, handler))
   )
+}
+
+function sendTelemetry(command: string, handler: Function) {
+  return function () {
+    telemetry.sendTelemetryEvent(command.replace('googleTasks.', ''))
+    return handler(arguments)
+  }
 }
