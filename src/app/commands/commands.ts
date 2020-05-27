@@ -87,6 +87,6 @@ export function registerCommands(): void {
 function sendTelemetry(command: string, handler: Function) {
   return function () {
     telemetry.sendTelemetryEvent(command.replace('googleTasks.', ''))
-    return handler(arguments)
+    return handler(...arguments)
   }
 }
