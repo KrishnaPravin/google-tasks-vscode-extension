@@ -12,8 +12,8 @@ type GTaskTreeItem = GTask | GTaskList
 class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
   service?: tasks_v1.Tasks
 
-  private _onDidChangeTreeData: vscode.EventEmitter<GTask> = new vscode.EventEmitter<GTask>()
-  readonly onDidChangeTreeData: vscode.Event<GTask> = this._onDidChangeTreeData.event
+  private _onDidChangeTreeData: vscode.EventEmitter<undefined> = new vscode.EventEmitter<undefined>()
+  readonly onDidChangeTreeData: vscode.Event<undefined> = this._onDidChangeTreeData.event
   private _showCompleted = false
 
   setOAuthClient(oAuth2Client: OAuth2Client): GTaskTreeProvider {
@@ -66,7 +66,7 @@ class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
   refresh(options?: {showCompleted?: boolean}): void {
     if (options && options.showCompleted !== undefined)
       this._showCompleted = Boolean(options.showCompleted)
-    this._onDidChangeTreeData.fire()
+    this._onDidChangeTreeData.fire(undefined)
   }
 
   async addTaskList(tasklist: tasks_v1.Params$Resource$Tasklists$Insert) {
