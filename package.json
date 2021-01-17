@@ -14,7 +14,7 @@
   "version": "0.3.0",
   "aiKey": "c5722733-cc25-4ee0-bf89-febeea8257da",
   "engines": {
-    "vscode": "^1.44.0"
+    "vscode": "^1.52.0"
   },
   "categories": [
     "Other"
