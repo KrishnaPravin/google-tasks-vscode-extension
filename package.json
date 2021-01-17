@@ -11,7 +11,7 @@
     "url": "https://github.com/KrishnaPravin/google-tasks-vscode-extension/issues"
   },
   "icon": "resources/logo.png",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "aiKey": "c5722733-cc25-4ee0-bf89-febeea8257da",
   "engines": {
     "vscode": "^1.44.0"
