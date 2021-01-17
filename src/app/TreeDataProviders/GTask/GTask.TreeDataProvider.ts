@@ -84,7 +84,7 @@ class GTaskTreeProvider implements vscode.TreeDataProvider<GTaskTreeItem> {
     this.refresh()
   }
 
-  async completeTask(task: tasks_v1.Params$Resource$Tasks$Patch) {
+  async patchTask(task: tasks_v1.Params$Resource$Tasks$Patch) {
     await this.service?.tasks.patch(task)
     this.refresh()
   }

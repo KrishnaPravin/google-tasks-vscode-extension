@@ -30,7 +30,7 @@ const commandsList = {
   },
   'googleTasks.addTaskList': async () => {
     const title = await window.showInputBox({
-      prompt: 'Please provide a title for the tasklist',
+      prompt: 'Provide a title for the tasklist',
       placeHolder: 'Tasklist title',
       value: undefined,
       ignoreFocusOut: true,
@@ -46,7 +46,7 @@ const commandsList = {
     if (node.taskList.id === null) return
 
     const title = await window.showInputBox({
-      prompt: 'Please provide a title for the task',
+      prompt: 'Provide a title for the task',
       placeHolder: 'Task title',
       value: undefined,
       ignoreFocusOut: true,
@@ -54,7 +54,7 @@ const commandsList = {
     if (title === undefined || title.length === 0) return undefined
 
     const notes = await window.showInputBox({
-      prompt: 'Please provide the notes for the task',
+      prompt: 'Provide the notes for the task (optional)',
       placeHolder: 'Notes for the task',
       value: undefined,
       ignoreFocusOut: true,
@@ -62,12 +62,29 @@ const commandsList = {
 
     gTaskTreeProvider.addTask({tasklist: node.taskList.id, requestBody: {title, notes}})
   },
+  'googleTasks.addSubTask': async (node: GTask) => {
+    if (node.task.id === null) return
+
+    const title = await window.showInputBox({
+      prompt: 'Provide a title for the subtask',
+      placeHolder: 'SubTask title',
+      value: undefined,
+      ignoreFocusOut: true,
+    })
+    if (title === undefined || title.length === 0) return undefined
+
+    gTaskTreeProvider.addTask({
+      tasklist: node.taskListId,
+      parent: node.task.id,
+      requestBody: {title},
+    })
+  },
   'googleTasks.deleteTask': async (node: GTask) => {
     if (node.task.id) gTaskTreeProvider.deleteTask({tasklist: node.taskListId, task: node.task.id})
   },
   'googleTasks.completeTask': async (node: GTask) => {
     if (node.task.id)
-      gTaskTreeProvider.completeTask({
+      gTaskTreeProvider.patchTask({
         tasklist: node.taskListId,
         task: node.task.id,
         requestBody: {
@@ -75,6 +92,23 @@ const commandsList = {
           hidden: true,
         },
       })
+  },
+  'googleTasks.renameTask': async (node: GTask) => {
+    if (!node.task.id) return
+
+    const title = await window.showInputBox({
+      prompt: 'Provide a title for the task',
+      placeHolder: 'Task title',
+      value: node?.task?.title || undefined,
+      ignoreFocusOut: true,
+    })
+    if (title === undefined || title.length === 0) return
+
+    gTaskTreeProvider.patchTask({
+      tasklist: node.taskListId,
+      task: node.task.id,
+      requestBody: {title},
+    })
   },
 }
 

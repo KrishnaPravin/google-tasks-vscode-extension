@@ -111,6 +111,14 @@
         }
       },
       {
+        "command": "googleTasks.addSubTask",
+        "title": "Add Sub Task",
+        "icon": {
+          "dark": "resources/dark-icon-add.svg",
+          "light": "resources/light-icon-add.svg"
+        }
+      },
+      {
         "command": "googleTasks.deleteTask",
         "title": "Delete Task",
         "icon": {
@@ -124,6 +132,14 @@
         "icon": {
           "dark": "resources/dark-icon-complete-task.svg",
           "light": "resources/light-icon-complete-task.svg"
+        }
+      },
+      {
+        "command": "googleTasks.renameTask",
+        "title": "Rename Task",
+        "icon": {
+          "dark": "resources/dark-icon-edit.svg",
+          "light": "resources/light-icon-edit.svg"
         }
       }
     ],
@@ -192,23 +208,43 @@
           "group": "1_actions@2"
         },
         {
-          "command": "googleTasks.completeTask",
+          "command": "googleTasks.addSubTask",
           "when": "viewItem =~ /GTask$/",
           "group": "inline@1"
         },
         {
-          "command": "googleTasks.deleteTask",
-          "when": "viewItem =~ /GTask$/",
+          "command": "googleTasks.renameTask",
+          "when": "viewItem =~ /GTaskSubItem|GTask$/",
           "group": "inline@2"
         },
         {
           "command": "googleTasks.completeTask",
+          "when": "viewItem =~ /GTaskSubItem|GTask$/",
+          "group": "inline@3"
+        },
+        {
+          "command": "googleTasks.deleteTask",
+          "when": "viewItem =~ /GTaskSubItem|GTask$/",
+          "group": "inline@4"
+        },
+        {
+          "command": "googleTasks.addSubTask",
           "when": "viewItem =~ /GTask$/",
+          "group": "1_actions@3"
+        },
+        {
+          "command": "googleTasks.renameTask",
+          "when": "viewItem =~ /GTaskSubItem|GTask$/",
+          "group": "1_actions"
+        },
+        {
+          "command": "googleTasks.completeTask",
+          "when": "viewItem =~ /GTaskSubItem|GTask$/",
           "group": "1_actions"
         },
         {
           "command": "googleTasks.deleteTask",
-          "when": "viewItem =~ /GTask$/",
+          "when": "viewItem =~ /GTaskSubItem|GTask$/",
           "group": "1_actions"
         }
       ]
@@ -226,8 +262,8 @@
   "devDependencies": {
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.14",
-    "googleapis": "^45.0.0",
-    "googleapis-common": "^3.2.0",
+    "googleapis": "^67.0.0",
+    "googleapis-common": "^5.0.0",
     "ts-loader": "^6.2.1",
     "tslint": "^5.20.1",
     "typescript": "^3.7.3",

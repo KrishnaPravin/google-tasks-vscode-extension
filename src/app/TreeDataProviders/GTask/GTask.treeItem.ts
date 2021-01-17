@@ -20,14 +20,17 @@ export class GTask extends vscode.TreeItem {
         ? vscode.TreeItemCollapsibleState.Collapsed
         : vscode.TreeItemCollapsibleState.None
     )
+    if (task.parent) this.contextValue += 'SubItem'
   }
 
   // Overrides
+  // @ts-ignore
   get tooltip(): string {
     return this.task.notes || this.task.title || 'No Title Provided'
   }
 
   // Overrides
+  // @ts-ignore
   get description(): string {
     const hasChildren = Boolean(this.children.length)
     const hasNotes = Boolean(this.task.notes)
@@ -38,6 +41,7 @@ export class GTask extends vscode.TreeItem {
     )
   }
   // Overrides
+  // @ts-ignore
   get iconPath() {
     const icon = `icon-task-${this.task.completed ? 'completed.svg' : 'incomplete.svg'}`
     return {
