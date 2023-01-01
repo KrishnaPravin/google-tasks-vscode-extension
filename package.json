@@ -265,13 +265,13 @@
     "@types/vscode": "^1.52.0",
     "googleapis": "^67.0.0",
     "googleapis-common": "^5.0.0",
-    "ts-loader": "^6.2.1",
+    "ts-loader": "^9.4.2",
     "tslint": "^5.20.1",
     "typescript": "^3.7.3",
     "vsce": "^1.75.0",
     "vscode-extension-telemetry": "^0.1.6",
     "vscode-test": "^1.2.3",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }
